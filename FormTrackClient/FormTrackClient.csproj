@@ -48,4 +48,46 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Black.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-BlackItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-BoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-ExtraBold.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-ExtraBoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-ExtraLight.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-ExtraLightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Italic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Light.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-LightItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-MediumItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-SemiBold.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-SemiBoldItalic.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Thin.ttf" />
+	  <None Remove="Resources\Fonts\Montserrat\Montserrat-ThinItalic.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-Black.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-BlackItalic.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-Bold.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-BoldItalic.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-ExtraBold.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-ExtraBoldItalic.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-ExtraLight.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-ExtraLightItalic.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-Italic.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-Light.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-LightItalic.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-Medium.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-MediumItalic.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-Regular.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-SemiBold.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-SemiBoldItalic.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-Thin.ttf" />
+	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-ThinItalic.ttf" />
+	</ItemGroup>
+
 </Project>

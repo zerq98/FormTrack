@@ -2,23 +2,47 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
 	public MainPage()
 	{
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+	private void ShowPassBtn_Clicked(object sender, EventArgs e)
 	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
+		PasswordEntry.IsPassword = !PasswordEntry.IsPassword;
+		if (PasswordEntry.IsPassword)
+		{
+			ShowPassBtn.Text = "Show";
+		}
 		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+		{
+			ShowPassBtn.Text = "Hide";
+		}
 	}
+
+	private void ConfirmBtn_Clicked(object sender, EventArgs e)
+	{
+
+	}
+
+	private void RememberPassword_Tapped(object sender, EventArgs e)
+	{
+
+	}
+
+    private void Register_Tapped(object sender, EventArgs e)
+    {
+
+    }
+
+    private void FbImage_Clicked(object sender,EventArgs e)
+	{
+
+	}
+
+    private void GoogleImage_Clicked(object sender, EventArgs e)
+    {
+
+    }
 }
 
