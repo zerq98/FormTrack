@@ -30,9 +30,9 @@ public partial class MainPage : ContentPage
 
 	}
 
-    private void Register_Tapped(object sender, EventArgs e)
+    private async void Register_Tapped(object sender, EventArgs e)
     {
-
+		await Shell.Current.GoToAsync("Register");
     }
 
     private void FbImage_Clicked(object sender,EventArgs e)

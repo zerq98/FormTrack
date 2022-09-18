@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FormTrackClient.Views.UserControls.TextSwitchControl">
+    <AbsoluteLayout x:Name="MainLayout">
+        <Border StrokeThickness="0" Background="Transparent" ZIndex="1" WidthRequest="218" AbsoluteLayout.LayoutBounds="0,0" Padding="0,10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="100"/>
+            </Border.StrokeShape>
+            <Label x:Name="LeftLabel" FontSize="20" FontAutoScalingEnabled="True" Padding="0,5" TextColor="#0ACFBF" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Label_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Border>
+        <Border StrokeThickness="0" Background="Transparent" ZIndex="1" WidthRequest="218" AbsoluteLayout.LayoutBounds="220,0" Padding="0,10">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="100"/>
+            </Border.StrokeShape>
+            <Label x:Name="RightLabel" FontSize="20" FontAutoScalingEnabled="True" Padding="0,5" TextColor="#0ACFBF" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Label_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </Border>
+        <Border x:Name="Highlight" StrokeThickness="0" Background="White" WidthRequest="218" HeightRequest="58" ZIndex="0" AbsoluteLayout.LayoutBounds="0,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="100"/>
+            </Border.StrokeShape>
+        </Border>
+    </AbsoluteLayout>
+</ContentView>

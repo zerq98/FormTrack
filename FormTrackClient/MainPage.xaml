@@ -10,12 +10,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Text="Welcome &#10;to FormTrack" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03"/>
-        <Label Grid.Row="1" Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7"/>
-        <VerticalStackLayout Grid.Row="2" Spacing="5">
+        <VerticalStackLayout Grid.Row="0" Spacing="5">
+            <Label Grid.Row="0" Text="Welcome &#10;to FormTrack" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03"/>
+            <Label Grid.Row="1" Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7"/>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Row="2" Spacing="15">
             <Border Stroke="#E8E8E8" StrokeThickness="1" Background="#F6F6F6">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8"/>
@@ -52,37 +52,39 @@
                 </Label.GestureRecognizers>
             </Label>
         </VerticalStackLayout>
-        <Grid Grid.Row="4" HorizontalOptions="Center" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
-            <Rectangle Grid.Column="0" Background="#878787" HeightRequest="1" Margin="10,0"/>
-            <Label Grid.Column="1" Text="Or continue with" FontSize="16" FontAutoScalingEnabled="True" FontFamily="MontserratBold" CharacterSpacing="0.05" TextColor="#878787" Margin="10,0"/>
-            <Rectangle Grid.Column="2" Background="#878787" HeightRequest="1" Margin="10,0"/>
-        </Grid>
-        <HorizontalStackLayout HorizontalOptions="Center" Grid.Row="5" HeightRequest="60" x:Name="SocialMediaBar">
-            <Border Margin="10,0" Background="#0ACFBF" WidthRequest="60" StrokeThickness="0">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="100"/>
-                </Border.StrokeShape>
-                <ImageButton Margin="15" Source="fb.png" Clicked="FbImage_Clicked"/>
-            </Border>
-            <Border Margin="10,0" Background="#0ACFBF" WidthRequest="60" StrokeThickness="0">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="100"/>
-                </Border.StrokeShape>
-                <ImageButton Margin="15" Source="google.png" Clicked="GoogleImage_Clicked"/>
-            </Border>
-        </HorizontalStackLayout>
-        <Label Grid.Row="6" FontSize="20" TextType="Html" FontAutoScalingEnabled="True" FontFamily="Montserrat" HorizontalTextAlignment="Center" CharacterSpacing="0.065" TextColor="#101B2B">
-            <![CDATA[
+        <VerticalStackLayout Grid.Row="4" Spacing="30">
+            <Grid HorizontalOptions="Center" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Rectangle Grid.Column="0" Background="#878787" HeightRequest="1" Margin="10,0"/>
+                <Label Grid.Column="1" Text="Or continue with" FontSize="16" FontAutoScalingEnabled="True" FontFamily="MontserratBold" CharacterSpacing="0.05" TextColor="#878787" Margin="10,0"/>
+                <Rectangle Grid.Column="2" Background="#878787" HeightRequest="1" Margin="10,0"/>
+            </Grid>
+            <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="60" x:Name="SocialMediaBar">
+                <Border Margin="10,0" Background="#0ACFBF" WidthRequest="60" StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="100"/>
+                    </Border.StrokeShape>
+                    <ImageButton Margin="15" Source="fb.png" Clicked="FbImage_Clicked"/>
+                </Border>
+                <Border Margin="10,0" Background="#0ACFBF" WidthRequest="60" StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="100"/>
+                    </Border.StrokeShape>
+                    <ImageButton Margin="15" Source="google.png" Clicked="GoogleImage_Clicked"/>
+                </Border>
+            </HorizontalStackLayout>
+            <Label FontSize="20" TextType="Html" FontAutoScalingEnabled="True" FontFamily="Montserrat" HorizontalTextAlignment="Center" CharacterSpacing="0.065" TextColor="#101B2B">
+                <![CDATA[
             Not a member? <u><span style="color: #0ACFBF;">Register now</span></u>
             ]]>
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="Register_Tapped" />
-            </Label.GestureRecognizers>
-        </Label>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Register_Tapped" />
+                </Label.GestureRecognizers>
+            </Label>
+        </VerticalStackLayout>
     </Grid>
 </ContentPage>

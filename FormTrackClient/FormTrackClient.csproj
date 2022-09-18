@@ -90,4 +90,13 @@
 	  <MauiFont Include="Resources\Fonts\Montserrat\Montserrat-ThinItalic.ttf" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Views\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\UserControls\TextSwitchControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

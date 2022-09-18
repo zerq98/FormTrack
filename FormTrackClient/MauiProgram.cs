@@ -1,4 +1,6 @@
-﻿namespace FormTrackClient;
+﻿using FormTrackClient.Views;
+
+namespace FormTrackClient;
 
 public static class MauiProgram
 {
@@ -15,6 +17,9 @@ public static class MauiProgram
                 fonts.AddFont("Montserrat-Bold.ttf", "MontserratBold");
                 fonts.AddFont("Montserrat-SemiBold.ttf", "MontserratSemiBold");
             });
+
+		builder.Services.AddTransient<MainPage>();
+		builder.Services.AddTransient<RegisterPage>();
 
 		return builder.Build();
 	}
