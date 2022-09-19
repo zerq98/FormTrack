@@ -10,10 +10,9 @@
     <ShellContent
         Title=""
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage"/>
+        Route="MainPage" />
     <ShellContent
         Title=""
         ContentTemplate="{DataTemplate Views:RegisterPage}"
-        Route="RegisterPage"/>
-
+        Route="RegisterPage" />
 </Shell>

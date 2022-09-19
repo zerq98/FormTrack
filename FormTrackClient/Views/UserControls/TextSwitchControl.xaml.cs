@@ -48,8 +48,6 @@ public partial class TextSwitchControl : ContentView
         }
     }
 
-    public bool IsLeftSelected { get; private set; }
-
     public static readonly BindableProperty LeftContentProperty = BindableProperty.Create(
   propertyName: "LeftContent",
   returnType: typeof(string),
@@ -65,9 +63,9 @@ public partial class TextSwitchControl : ContentView
     }
 
     public TextSwitchControl()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+    }
 
     private void Label_Tapped(object sender, EventArgs e)
     {
@@ -82,4 +80,18 @@ public partial class TextSwitchControl : ContentView
             IsLeftSelected = false;
         }
     }
+    public bool IsLeftSelected
+    {
+        get
+        {
+            return (bool)GetValue(IsLeftSelectedProperty);
+        }
+        private set
+        {
+            SetValue(IsLeftSelectedProperty, value);
+        }
+    }
+
+    public static readonly BindableProperty IsLeftSelectedProperty =
+    BindableProperty.Create(nameof(IsLeftSelected), typeof(bool), typeof(TextSwitchControl), false,BindingMode.TwoWay);
 }

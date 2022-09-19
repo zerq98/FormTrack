@@ -1,80 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FormTrackClient.MainPage" Shell.NavBarIsVisible="False">
+             x:Class="FormTrackClient.MainPage"
+             xmlns:vm ="clr-namespace:FormTrackClient.ViewModels"
+             x:DataType="vm:MainPageVM"
+             Shell.NavBarIsVisible="False">
 
-    <Grid Padding="20,40" RowSpacing="35">
+    <Grid Padding="20,40" RowSpacing="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <VerticalStackLayout Grid.Row="0" Spacing="5">
-            <Label Grid.Row="0" Text="Welcome &#10;to FormTrack" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03"/>
-            <Label Grid.Row="1" Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7"/>
+            <Label Grid.Row="0" Text="Welcome &#10;to FormTrack" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03" />
+            <Label Grid.Row="1" Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7" />
+            <AbsoluteLayout IsVisible="{Binding IsAlertVisible}">
+                <Label Text="{Binding AlertMessage}" WidthRequest="440" Margin="10,10" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#FF0000" Opacity="1"/>
+                <RoundRectangle CornerRadius="8" Fill="Red" WidthRequest="440" HeightRequest="70" Opacity="0.35"/>
+            </AbsoluteLayout>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="2" Spacing="15">
+        <VerticalStackLayout Grid.Row="1" Spacing="15">
             <Border Stroke="#E8E8E8" StrokeThickness="1" Background="#F6F6F6">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="8"/>
+                    <RoundRectangle CornerRadius="8" />
                 </Border.StrokeShape>
-                <Entry x:Name="EmailEntry" Placeholder="Email" FontAutoScalingEnabled="True" TextColor="#BDBDBD" FontSize="20" FontFamily="Montserrat" Margin="20,0"/>
+                <Entry x:Name="EmailEntry" Text="{Binding Login}" Placeholder="Email" FontAutoScalingEnabled="True" TextColor="#BDBDBD" FontSize="20" FontFamily="Montserrat" Margin="20,0">
+                    <Entry.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
+                    </Entry.GestureRecognizers>
+                </Entry>
             </Border>
             <Border Stroke="#E8E8E8" StrokeThickness="1" Background="#F6F6F6">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="8"/>
+                    <RoundRectangle CornerRadius="8" />
                 </Border.StrokeShape>
                 <Grid Margin="20,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="70" />
                     </Grid.ColumnDefinitions>
-                    <Entry x:Name="PasswordEntry" Grid.Column="0" FontAutoScalingEnabled="True" IsPassword="True" Placeholder="Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="Start" />
-                    <Button x:Name="ShowPassBtn" Grid.Column="1" FontAutoScalingEnabled="True" Clicked="ShowPassBtn_Clicked" Text="Show" FontFamily="MontserratBold" BackgroundColor="Transparent" TextColor="#0ACFBF" HorizontalOptions="End"/>
+                    <Entry x:Name="PasswordEntry" Text="{Binding Password}" Grid.Column="0" FontAutoScalingEnabled="True" IsPassword="{Binding IsPasswordShow}" Placeholder="Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="Start">
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
+                        </Entry.GestureRecognizers>
+                    </Entry>
+                    <Button x:Name="ShowPassBtn" Grid.Column="1" FontAutoScalingEnabled="True" Text="{Binding PasswordShowBtnText}" FontFamily="MontserratBold" BackgroundColor="Transparent" TextColor="#0ACFBF" HorizontalOptions="End" Command="{Binding ChangePasswordVisibleCommand}"/>
                 </Grid>
             </Border>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="3" Spacing="15">
+        <VerticalStackLayout Grid.Row="2" Spacing="15" Margin="0,0,0,40">
             <Border StrokeThickness="0" Background="#0ACFBF">
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="100"/>
+                    <RoundRectangle CornerRadius="100" />
                 </Border.StrokeShape>
-                <Button x:Name="ConfirmBtn" FontFamily="MontserratSemiBold" FontAutoScalingEnabled="True" FontSize="20" Text="Log in" TextColor="#FAFD90" BackgroundColor="Transparent" Margin="0,5" Clicked="ConfirmBtn_Clicked"/>
+                <Button x:Name="ConfirmBtn" FontFamily="MontserratSemiBold" FontAutoScalingEnabled="True" FontSize="20" Text="Log in" TextColor="#FAFD90" BackgroundColor="Transparent" Margin="0,5" Command="{Binding ExecuteLoginCommand}" />
             </Border>
             <Label TextType="Html" FontAutoScalingEnabled="True" HorizontalTextAlignment="Center"  FontFamily="Montserrat" CharacterSpacing="0.065" TextColor="#878787" Opacity="0.7">
                 <![CDATA[
             Forgot password? <u>Click here</u>
             ]]>
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="RememberPassword_Tapped" />
+                    <TapGestureRecognizer Command="{Binding ShowRememberPasswordPageCommand}" />
                 </Label.GestureRecognizers>
             </Label>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="4" Spacing="30">
-            <Grid HorizontalOptions="Center" >
+        <VerticalStackLayout Grid.Row="3" Spacing="30">
+            <Grid HorizontalOptions="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
                 </Grid.ColumnDefinitions>
-                <Rectangle Grid.Column="0" Background="#878787" HeightRequest="1" Margin="10,0"/>
-                <Label Grid.Column="1" Text="Or continue with" FontSize="16" FontAutoScalingEnabled="True" FontFamily="MontserratBold" CharacterSpacing="0.05" TextColor="#878787" Margin="10,0"/>
-                <Rectangle Grid.Column="2" Background="#878787" HeightRequest="1" Margin="10,0"/>
+                <Rectangle Grid.Column="0" Background="#878787" HeightRequest="1" Margin="10,0" />
+                <Label Grid.Column="1" Text="Or continue with" FontSize="16" FontAutoScalingEnabled="True" FontFamily="MontserratBold" CharacterSpacing="0.05" TextColor="#878787" Margin="10,0" />
+                <Rectangle Grid.Column="2" Background="#878787" HeightRequest="1" Margin="10,0" />
             </Grid>
             <HorizontalStackLayout HorizontalOptions="Center" HeightRequest="60" x:Name="SocialMediaBar">
                 <Border Margin="10,0" Background="#0ACFBF" WidthRequest="60" StrokeThickness="0">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="100"/>
+                        <RoundRectangle CornerRadius="100" />
                     </Border.StrokeShape>
-                    <ImageButton Margin="15" Source="fb.png" Clicked="FbImage_Clicked"/>
+                    <ImageButton Margin="15" Source="fb.png" Command="{Binding LoginWithProvidersCommand}" CommandParameter="fb"/>
                 </Border>
                 <Border Margin="10,0" Background="#0ACFBF" WidthRequest="60" StrokeThickness="0">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="100"/>
+                        <RoundRectangle CornerRadius="100" />
                     </Border.StrokeShape>
-                    <ImageButton Margin="15" Source="google.png" Clicked="GoogleImage_Clicked"/>
+                    <ImageButton Margin="15" Source="google.png" Command="{Binding LoginWithProvidersCommand}" CommandParameter="google"/>
                 </Border>
             </HorizontalStackLayout>
             <Label FontSize="20" TextType="Html" FontAutoScalingEnabled="True" FontFamily="Montserrat" HorizontalTextAlignment="Center" CharacterSpacing="0.065" TextColor="#101B2B">
@@ -82,7 +96,7 @@
             Not a member? <u><span style="color: #0ACFBF;">Register now</span></u>
             ]]>
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="Register_Tapped" />
+                    <TapGestureRecognizer Command="{Binding ShowRegisterPageCommand}" />
                 </Label.GestureRecognizers>
             </Label>
         </VerticalStackLayout>

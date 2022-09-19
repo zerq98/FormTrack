@@ -5,7 +5,7 @@
     <AbsoluteLayout x:Name="MainLayout">
         <Border StrokeThickness="0" Background="Transparent" ZIndex="1" WidthRequest="218" AbsoluteLayout.LayoutBounds="0,0" Padding="0,10">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="100"/>
+                <RoundRectangle CornerRadius="100" />
             </Border.StrokeShape>
             <Label x:Name="LeftLabel" FontSize="20" FontAutoScalingEnabled="True" Padding="0,5" TextColor="#0ACFBF" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 <Label.GestureRecognizers>
@@ -15,7 +15,7 @@
         </Border>
         <Border StrokeThickness="0" Background="Transparent" ZIndex="1" WidthRequest="218" AbsoluteLayout.LayoutBounds="220,0" Padding="0,10">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="100"/>
+                <RoundRectangle CornerRadius="100" />
             </Border.StrokeShape>
             <Label x:Name="RightLabel" FontSize="20" FontAutoScalingEnabled="True" Padding="0,5" TextColor="#0ACFBF" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 <Label.GestureRecognizers>
@@ -25,7 +25,7 @@
         </Border>
         <Border x:Name="Highlight" StrokeThickness="0" Background="White" WidthRequest="218" HeightRequest="58" ZIndex="0" AbsoluteLayout.LayoutBounds="0,0">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="100"/>
+                <RoundRectangle CornerRadius="100" />
             </Border.StrokeShape>
         </Border>
     </AbsoluteLayout>
