@@ -19,7 +19,7 @@ namespace FormTrackClient.ViewModels
         string passwordShowBtnText = "Show";
 
         [RelayCommand]
-        void ExecuteLogin()
+        async Task ExecuteLogin()
         {
             if(Login==String.Empty || Password == String.Empty)
             {
@@ -28,6 +28,7 @@ namespace FormTrackClient.ViewModels
                 return;
             }
 
+            await Shell.Current.GoToAsync("Home");
         }
 
         [RelayCommand]
@@ -46,7 +47,7 @@ namespace FormTrackClient.ViewModels
         void ChangePasswordVisible()
         {
             IsPasswordShow = !IsPasswordShow;
-            if (IsPasswordShow)
+            if (!IsPasswordShow)
             {
                 PasswordShowBtnText = "Hide";
             }

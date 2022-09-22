@@ -10,15 +10,8 @@ public partial class MainPage : ContentPage
         BindingContext = vm;
     }
 
-    private void RememberPassword_Tapped(object sender, EventArgs e)
+    private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
     {
-    }
-
-    private void FbImage_Clicked(object sender, EventArgs e)
-    {
-    }
-
-    private void GoogleImage_Clicked(object sender, EventArgs e)
-    {
+        this.Focus();
     }
 }

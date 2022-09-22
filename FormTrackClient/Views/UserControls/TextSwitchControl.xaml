@@ -3,30 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FormTrackClient.Views.UserControls.TextSwitchControl">
     <AbsoluteLayout x:Name="MainLayout">
-        <Border StrokeThickness="0" Background="Transparent" ZIndex="1" WidthRequest="218" AbsoluteLayout.LayoutBounds="0,0" Padding="0,10">
+        <Border StrokeThickness="0" Background="Transparent" ZIndex="1" AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,0.5,1">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="100" />
             </Border.StrokeShape>
-            <Label x:Name="LeftLabel" FontSize="20" FontAutoScalingEnabled="True" Padding="0,5" TextColor="#0ACFBF" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+            <Label x:Name="LeftLabel" FontSize="16" FontAutoScalingEnabled="True" TextColor="#0ACFBF" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Label_Tapped" />
                 </Label.GestureRecognizers>
             </Label>
         </Border>
-        <Border StrokeThickness="0" Background="Transparent" ZIndex="1" WidthRequest="218" AbsoluteLayout.LayoutBounds="220,0" Padding="0,10">
+        <Border StrokeThickness="0" Background="Transparent" ZIndex="1"  AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="220,0,0.5,1">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="100" />
             </Border.StrokeShape>
-            <Label x:Name="RightLabel" FontSize="20" FontAutoScalingEnabled="True" Padding="0,5" TextColor="#0ACFBF" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+            <Label x:Name="RightLabel" FontSize="16" FontAutoScalingEnabled="True" Padding="0,0,30,0" TextColor="#0ACFBF" HorizontalTextAlignment="End" VerticalTextAlignment="Center">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="Label_Tapped" />
                 </Label.GestureRecognizers>
             </Label>
         </Border>
-        <Border x:Name="Highlight" StrokeThickness="0" Background="White" WidthRequest="218" HeightRequest="58" ZIndex="0" AbsoluteLayout.LayoutBounds="0,0">
+        <Border x:Name="Highlight" StrokeThickness="0" Background="White" ZIndex="0"  AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,0.5,1">
             <Border.StrokeShape>
                 <RoundRectangle CornerRadius="100" />
             </Border.StrokeShape>
+            <Label FontSize="16" FontAutoScalingEnabled="True" Padding="0,5" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"></Label>
         </Border>
     </AbsoluteLayout>
 </ContentView>

@@ -4,24 +4,17 @@
              x:Class="FormTrackClient.MainPage"
              xmlns:vm ="clr-namespace:FormTrackClient.ViewModels"
              x:DataType="vm:MainPageVM"
-             Shell.NavBarIsVisible="False">
-
-    <Grid Padding="20,40" RowSpacing="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <VerticalStackLayout Grid.Row="0" Spacing="5">
+             Shell.NavBarIsVisible="False" Background="White">
+    <StackLayout x:Name="MainGrid" Margin="20,40" Spacing="40" Orientation="Vertical">
+        <VerticalStackLayout Spacing="5">
             <Label Grid.Row="0" Text="Welcome &#10;to FormTrack" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03" />
             <Label Grid.Row="1" Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7" />
             <AbsoluteLayout IsVisible="{Binding IsAlertVisible}">
                 <Label Text="{Binding AlertMessage}" WidthRequest="440" Margin="10,10" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#FF0000" Opacity="1"/>
-                <RoundRectangle CornerRadius="8" Fill="Red" WidthRequest="440" HeightRequest="70" Opacity="0.35"/>
+                <RoundRectangle CornerRadius="8" Fill="Red" WidthRequest="440" HeightRequest="70" Opacity="0.15"/>
             </AbsoluteLayout>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="1" Spacing="15">
+        <VerticalStackLayout Spacing="15" VerticalOptions="Center">
             <Border Stroke="#E8E8E8" StrokeThickness="1" Background="#F6F6F6">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8" />
@@ -50,7 +43,7 @@
                 </Grid>
             </Border>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="2" Spacing="15" Margin="0,0,0,40">
+        <VerticalStackLayout Spacing="15" Margin="0,0,0,40">
             <Border StrokeThickness="0" Background="#0ACFBF">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="100" />
@@ -66,7 +59,7 @@
                 </Label.GestureRecognizers>
             </Label>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="3" Spacing="30">
+        <VerticalStackLayout Spacing="30">
             <Grid HorizontalOptions="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100" />
@@ -100,5 +93,5 @@
                 </Label.GestureRecognizers>
             </Label>
         </VerticalStackLayout>
-    </Grid>
+    </StackLayout>
 </ContentPage>

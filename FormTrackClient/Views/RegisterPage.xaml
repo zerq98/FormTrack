@@ -4,29 +4,33 @@
              xmlns:userControl="clr-namespace:FormTrackClient.Views.UserControls"
              xmlns:vm ="clr-namespace:FormTrackClient.ViewModels"
              x:DataType="vm:RegisterPageVM"
-             x:Class="FormTrackClient.Views.RegisterPage" Shell.NavBarIsVisible="False">
+             x:Class="FormTrackClient.Views.RegisterPage" Shell.NavBarIsVisible="False" BackgroundColor="White">
 
-    <Grid Padding="20,40" RowSpacing="35">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <VerticalStackLayout Grid.Row="0" Spacing="5">
+    <StackLayout Margin="20,40" Spacing="40" Orientation="Vertical">
+        <VerticalStackLayout Spacing="5">
             <Label Grid.Row="0" Text="Join to&#10;our community" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03" />
             <Label Grid.Row="1" Text="Other people need you to,&#10;achieve their goals." FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7" />
             <AbsoluteLayout IsVisible="{Binding IsAlertVisible}">
                 <Label Text="{Binding AlertMessage}" WidthRequest="440" Margin="10,10" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#FF0000" Opacity="1"/>
-                <RoundRectangle CornerRadius="8" Fill="Red" WidthRequest="440" HeightRequest="70" Opacity="0.35"/>
+                <RoundRectangle CornerRadius="8" Fill="Red" WidthRequest="440" HeightRequest="70" Opacity="0.15"/>
             </AbsoluteLayout>
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="1" Spacing="15">
+        <VerticalStackLayout Spacing="15"  VerticalOptions="Center">
             <Border Stroke="#E8E8E8" StrokeThickness="1" Background="#F6F6F6">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8" />
                 </Border.StrokeShape>
-                <Entry x:Name="EmailEntry" Text="{Binding Email}" Placeholder="Email" FontAutoScalingEnabled="True" TextColor="#BDBDBD" FontSize="20" FontFamily="Montserrat" Margin="20,0">
+                <Entry Text="{Binding Email}" Placeholder="Email" FontAutoScalingEnabled="True" TextColor="#BDBDBD" FontSize="20" FontFamily="Montserrat" Margin="20,0">
+                    <Entry.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
+                    </Entry.GestureRecognizers>
+                </Entry>
+            </Border>
+            <Border Stroke="#E8E8E8" StrokeThickness="1" Background="#F6F6F6">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8" />
+                </Border.StrokeShape>
+                <Entry Text="{Binding Username}" Placeholder="Username" FontAutoScalingEnabled="True" TextColor="#BDBDBD" FontSize="20" FontFamily="Montserrat" Margin="20,0">
                     <Entry.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
                     </Entry.GestureRecognizers>
@@ -41,12 +45,12 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="70" />
                     </Grid.ColumnDefinitions>
-                    <Entry x:Name="PasswordEntry" Grid.Column="0"  Text="{Binding Password}" FontAutoScalingEnabled="True" IsPassword="{Binding IsConfirmPasswordVisible}" Placeholder="Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="Start">
+                    <Entry Grid.Column="0"  Text="{Binding Password}" FontAutoScalingEnabled="True" IsPassword="{Binding IsPasswordVisible}" Placeholder="Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="Start">
                         <Entry.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
                         </Entry.GestureRecognizers>
                     </Entry>
-                    <Button x:Name="ShowPassBtn" Grid.Column="1" FontAutoScalingEnabled="True" Text="{Binding ShowPasswordBtnText}" FontFamily="MontserratBold" BackgroundColor="Transparent" TextColor="#0ACFBF" HorizontalOptions="End" />
+                    <Button Grid.Column="1" FontAutoScalingEnabled="True" Text="{Binding ShowPasswordBtnText}" FontFamily="MontserratBold" BackgroundColor="Transparent" TextColor="#0ACFBF" HorizontalOptions="End" Command="{Binding ChangePasswordVisibleCommand}" />
                 </Grid>
             </Border>
             <Border Stroke="#E8E8E8" StrokeThickness="1" Background="#F6F6F6">
@@ -58,26 +62,34 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="70" />
                     </Grid.ColumnDefinitions>
-                    <Entry x:Name="ConfirmPasswordEntry" Text="{Binding ConfirmPassword}" Grid.Column="0" FontAutoScalingEnabled="True" IsPassword="{Binding IsConfirmPasswordVisible}" Placeholder="Confirm Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="Start">
+                    <Entry Text="{Binding ConfirmPassword}" Grid.Column="0" FontAutoScalingEnabled="True" IsPassword="{Binding IsConfirmPasswordVisible}" Placeholder="Confirm Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="Start">
                         <Entry.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
                         </Entry.GestureRecognizers>
                     </Entry>
-                    <Button x:Name="ShowConfirmPassBtn" Grid.Column="1" FontAutoScalingEnabled="True" Text="{Binding ShowConfirmPasswordBtnText}" FontFamily="MontserratBold" BackgroundColor="Transparent" TextColor="#0ACFBF" HorizontalOptions="End" />
+                    <Button Grid.Column="1" FontAutoScalingEnabled="True" Text="{Binding ShowConfirmPasswordBtnText}" FontFamily="MontserratBold" BackgroundColor="Transparent" TextColor="#0ACFBF" HorizontalOptions="End" Command="{Binding ChangeConfirmPasswordVisibleCommand}" />
                 </Grid>
             </Border>
             <Border Stroke="#E8E8E8" StrokeThickness="1" Background="#F6F6F6">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="100" />
                 </Border.StrokeShape>
-                <userControl:TextSwitchControl x:Name="UserTypeSwitch" IsLeftSelected="{Binding IsNormalUser}"  RightContent="Personal Trainer" LeftContent="Normal User">
+                <userControl:TextSwitchControl x:Name="UserTypeSwitch" HeightRequest="50" IsLeftSelected="{Binding IsNormalUser}"  RightContent="Personal Trainer" LeftContent="Normal User">
                     <userControl:TextSwitchControl.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
                     </userControl:TextSwitchControl.GestureRecognizers>
                 </userControl:TextSwitchControl>
             </Border>
+            <!--<StackLayout Margin="10,0" Orientation="Horizontal">
+                <Label FontSize="20" Text="Personal trainer" FontAutoScalingEnabled="True" FontFamily="MontserratSemiBold" HorizontalOptions="StartAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" CharacterSpacing="0.065" TextColor="#0ACFBF">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ChangeUserTypeCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Switch IsToggled="{Binding IsPersonalTrainer}" OnColor="#0ACFBF"/>
+            </StackLayout>-->
         </VerticalStackLayout>
-        <VerticalStackLayout Grid.Row="2" Spacing="15">
+        <VerticalStackLayout Spacing="15">
             <Border StrokeThickness="0" Background="#0ACFBF">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="100" />
@@ -85,7 +97,7 @@
                 <Button x:Name="ConfirmBtn" FontFamily="MontserratSemiBold" FontAutoScalingEnabled="True" FontSize="20" Text="Register" TextColor="#FAFD90" BackgroundColor="Transparent" Margin="0,5" Command="{Binding ExecuteRegisterCommand}" />
             </Border>
         </VerticalStackLayout>
-        <Label Grid.Row="3" FontSize="20" TextType="Html" FontAutoScalingEnabled="True" FontFamily="Montserrat" HorizontalTextAlignment="Center" CharacterSpacing="0.065" TextColor="#101B2B">
+        <Label FontSize="20" TextType="Html" FontAutoScalingEnabled="True" FontFamily="Montserrat" HorizontalTextAlignment="Center" CharacterSpacing="0.065" TextColor="#101B2B">
             <![CDATA[
             Already have an account? <u><span style="color: #0ACFBF;">Log in now</span></u>
             ]]>
@@ -93,5 +105,5 @@
                 <TapGestureRecognizer Command="{Binding ShowLoginPageCommand}" />
             </Label.GestureRecognizers>
         </Label>
-    </Grid>
+    </StackLayout>
 </ContentPage>

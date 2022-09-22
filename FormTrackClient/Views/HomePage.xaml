@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FormTrackClient.Views.HomePage"
+             xmlns:userControl="clr-namespace:FormTrackClient.Views.UserControls"
+             Title="HomePage" Shell.NavBarIsVisible="False" Shell.BackgroundColor="White">
+    <StackLayout Margin="20,30,20,0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Hi zerq!!" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03" />
+            <ImageButton Grid.Column="1" Grid.Row="0" Margin="10" Source="user.png"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7" />
+        </Grid>
+        <Label Padding="0,20" Text="What we do today?" FontSize="14" FontAutoScalingEnabled="True" FontFamily="MontserratBold" CharacterSpacing="0.03" TextColor="#878787"/>
+        <ScrollView VerticalOptions="FillAndExpand" >
+            <VerticalStackLayout Spacing="20" Padding="0,20">
+                <userControl:ActivityPanelContorl HeightRequest="200" LabelImage="equipment.jpg" LabelText="My training plan"/>
+                <userControl:ActivityPanelContorl HeightRequest="200" LabelImage="gym.jpg" LabelText="Gym training plans"/>
+                <userControl:ActivityPanelContorl HeightRequest="200" LabelImage="running.jpg" LabelText="Running training plans"/>
+            </VerticalStackLayout>
+        </ScrollView>
+        <ContentView Padding="0,2,0,0" Margin="-20,0" BackgroundColor="#878787">
+            <StackLayout Orientation="Horizontal" Spacing="15" Background="White">
+                <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                    <Image Source="home.png" WidthRequest="40"/>
+                    <Label Text="Home" HorizontalTextAlignment="Center" TextColor="#0ACFBF" FontFamily="MontserratBold"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                    <Image Source="plans_gray.png" WidthRequest="40"/>
+                    <Label Text="Plans" HorizontalTextAlignment="Center" TextColor="#878787" FontFamily="MontserratBold"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                    <Image Source="stats_gray.png" WidthRequest="40"/>
+                    <Label Text="Statistics" HorizontalTextAlignment="Center" TextColor="#878787" FontFamily="MontserratBold"/>
+                </VerticalStackLayout>
+                <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                    <Image Source="chats_gray.png" WidthRequest="40"/>
+                    <Label Text="Chats" HorizontalTextAlignment="Center" TextColor="#878787" FontFamily="MontserratBold"/>
+                </VerticalStackLayout>
+            </StackLayout>
+        </ContentView>
+    </StackLayout>
+</ContentPage>

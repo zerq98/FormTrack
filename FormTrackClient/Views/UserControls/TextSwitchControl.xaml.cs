@@ -65,6 +65,10 @@ public partial class TextSwitchControl : ContentView
     public TextSwitchControl()
     {
         InitializeComponent();
+        LeftLabel.WidthRequest = 200;
+        RightLabel.WidthRequest = 240;
+        Highlight.WidthRequest = 200;
+        RightLabel.TranslateTo(-60, 0);
     }
 
     private void Label_Tapped(object sender, EventArgs e)
@@ -76,7 +80,7 @@ public partial class TextSwitchControl : ContentView
         }
         else
         {
-            Highlight.TranslateTo(220, 0);
+            Highlight.TranslateTo(180, 0);
             IsLeftSelected = false;
         }
     }

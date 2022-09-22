@@ -19,9 +19,9 @@ namespace FormTrackClient.ViewModels
         [ObservableProperty]
         string confirmPassword = string.Empty;
         [ObservableProperty]
-        string showPasswordBtnText = string.Empty;
+        string showPasswordBtnText = "Show";
         [ObservableProperty]
-        string showConfirmPasswordBtnText = string.Empty;
+        string showConfirmPasswordBtnText = "Show";
         [ObservableProperty]
         string alertMessage = string.Empty;
         [ObservableProperty]
@@ -30,6 +30,8 @@ namespace FormTrackClient.ViewModels
         bool isPasswordVisible = true;
         [ObservableProperty]
         bool isConfirmPasswordVisible = true;
+        [ObservableProperty]
+        bool isPersonalTrainer = false;
         [ObservableProperty]
         bool isNormalUser = true;
 
@@ -43,7 +45,7 @@ namespace FormTrackClient.ViewModels
         void ChangePasswordVisible()
         {
             IsPasswordVisible = !IsPasswordVisible;
-            if (IsPasswordVisible)
+            if (!IsPasswordVisible)
             {
                 ShowPasswordBtnText = "Hide";
             }
@@ -57,7 +59,7 @@ namespace FormTrackClient.ViewModels
         void ChangeConfirmPasswordVisible()
         {
             IsConfirmPasswordVisible = !IsConfirmPasswordVisible;
-            if (IsPasswordVisible)
+            if (!IsPasswordVisible)
             {
                 ShowConfirmPasswordBtnText = "Hide";
             }
@@ -81,6 +83,12 @@ namespace FormTrackClient.ViewModels
                 IsAlertVisible = true;
                 AlertMessage = "Some of required fields are empty. Please provide data and try again.";
             }
+        }
+
+        [RelayCommand]
+        void ChangeUserType()
+        {
+            IsPersonalTrainer = !IsPersonalTrainer;
         }
     }
 }
