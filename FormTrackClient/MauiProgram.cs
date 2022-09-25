@@ -20,6 +20,7 @@ public static class MauiProgram
             });
         builder.Services.AddTransient<MainPageVM>();
         builder.Services.AddTransient<RegisterPageVM>();
+        builder.Services.AddTransient<HomePageVM>();
 
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<RegisterPage>();

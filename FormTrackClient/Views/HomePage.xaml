@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FormTrackClient.Views.HomePage"
              xmlns:userControl="clr-namespace:FormTrackClient.Views.UserControls"
+             xmlns:vm ="clr-namespace:FormTrackClient.ViewModels"
+             x:DataType="vm:HomePageVM"
              Title="HomePage" Shell.NavBarIsVisible="False" Shell.BackgroundColor="White">
     <StackLayout Margin="20,30,20,0">
         <Grid>
@@ -14,33 +16,57 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="60"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Text="Hi zerq!!" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03" />
-            <ImageButton Grid.Column="1" Grid.Row="0" Margin="10" Source="user.png"/>
+            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Username}" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03" />
+            <ImageButton Grid.Column="1" Grid.Row="0" Margin="10" Source="user.png" Command="{Binding ShowNavigationPageCommand}" CommandParameter="UserProfilePage"/>
             <Label Grid.Row="1" Grid.Column="0" Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7" />
         </Grid>
         <Label Padding="0,20" Text="What we do today?" FontSize="14" FontAutoScalingEnabled="True" FontFamily="MontserratBold" CharacterSpacing="0.03" TextColor="#878787"/>
         <ScrollView VerticalOptions="FillAndExpand" >
-            <VerticalStackLayout Spacing="20" Padding="0,20">
-                <userControl:ActivityPanelContorl HeightRequest="200" LabelImage="equipment.jpg" LabelText="My training plan"/>
-                <userControl:ActivityPanelContorl HeightRequest="200" LabelImage="gym.jpg" LabelText="Gym training plans"/>
-                <userControl:ActivityPanelContorl HeightRequest="200" LabelImage="running.jpg" LabelText="Running training plans"/>
+            <VerticalStackLayout Spacing="30" Padding="0,20">
+                <userControl:ActivityPanelContorl HeightRequest="200" LabelImage="equipment.jpg" LabelText="My training plans">
+                    <userControl:ActivityPanelContorl.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenPlansPageCommand}" CommandParameter="UserPlans"/>
+                    </userControl:ActivityPanelContorl.GestureRecognizers>
+                </userControl:ActivityPanelContorl>
+                <userControl:ActivityPanelContorl HeightRequest="200" LabelImage="gym.jpg" LabelText="Gym training plans">
+                    <userControl:ActivityPanelContorl.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenPlansPageCommand}" CommandParameter="GymPlans"/>
+                    </userControl:ActivityPanelContorl.GestureRecognizers>
+                </userControl:ActivityPanelContorl>
+                <userControl:ActivityPanelContorl HeightRequest="200" LabelImage="running.jpg" LabelText="Running training plans">
+                    <userControl:ActivityPanelContorl.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenPlansPageCommand}" CommandParameter="RunningPlans"/>
+                    </userControl:ActivityPanelContorl.GestureRecognizers>
+                </userControl:ActivityPanelContorl>
             </VerticalStackLayout>
         </ScrollView>
         <ContentView Padding="0,2,0,0" Margin="-20,0" BackgroundColor="#878787">
             <StackLayout Orientation="Horizontal" Spacing="15" Background="White">
                 <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowNavigationPageCommand}" CommandParameter="HomePage"/>
+                    </VerticalStackLayout.GestureRecognizers>
                     <Image Source="home.png" WidthRequest="40"/>
                     <Label Text="Home" HorizontalTextAlignment="Center" TextColor="#0ACFBF" FontFamily="MontserratBold"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowNavigationPageCommand}" CommandParameter="PlansPage"/>
+                    </VerticalStackLayout.GestureRecognizers>
                     <Image Source="plans_gray.png" WidthRequest="40"/>
                     <Label Text="Plans" HorizontalTextAlignment="Center" TextColor="#878787" FontFamily="MontserratBold"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowNavigationPageCommand}" CommandParameter="StatsPage"/>
+                    </VerticalStackLayout.GestureRecognizers>
                     <Image Source="stats_gray.png" WidthRequest="40"/>
                     <Label Text="Statistics" HorizontalTextAlignment="Center" TextColor="#878787" FontFamily="MontserratBold"/>
                 </VerticalStackLayout>
                 <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                    <VerticalStackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowNavigationPageCommand}" CommandParameter="ChatsPage"/>
+                    </VerticalStackLayout.GestureRecognizers>
                     <Image Source="chats_gray.png" WidthRequest="40"/>
                     <Label Text="Chats" HorizontalTextAlignment="Center" TextColor="#878787" FontFamily="MontserratBold"/>
                 </VerticalStackLayout>
