@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Platforms\Android\Resources\xml\network_security_config.xml" />
 	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Black.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\Montserrat-BlackItalic.ttf" />
 	  <None Remove="Resources\Fonts\Montserrat\Montserrat-Bold.ttf" />
@@ -92,6 +93,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using FormTrackClient.Api;
+using FormTrackClient.Models.Dtos;
 
 namespace FormTrackClient.ViewModels
 {
@@ -28,7 +30,32 @@ namespace FormTrackClient.ViewModels
                 return;
             }
 
-            await Shell.Current.GoToAsync("Home");
+            var apiClient = new ApiClient();
+            var response = await apiClient.LoginAsync(new LoginDto
+            {
+                Email = login,
+                Password = password
+            });
+
+            if(response == null)
+            {
+                AlertMessage = "There was a problem with connection to server.";
+                IsAlertVisible = true;
+                return;
+            }
+
+            if (response.Code == 200)
+            {
+                MauiProgram.TokenExpireDate = response.Data.ExpireDate;
+                MauiProgram.BearerToken = response.Data.Token;
+                MauiProgram.UserName = response.Data.Username;
+                await Shell.Current.GoToAsync("Home");
+            }
+            else
+            {
+                AlertMessage = response.ErrorMessage;
+                IsAlertVisible = true;
+            }
         }
 
         [RelayCommand]

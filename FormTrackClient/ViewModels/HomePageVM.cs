@@ -11,7 +11,7 @@ namespace FormTrackClient.ViewModels
     public partial class HomePageVM:BaseVM
     {
         [ObservableProperty]
-        string username = "Hi zerq!!!";
+        string username = $"Hi {MauiProgram.UserName}!!!";
 
         [RelayCommand]
         async Task OpenPlansPageAsync(string page)

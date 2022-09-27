@@ -7,9 +7,9 @@
              Shell.NavBarIsVisible="False" Background="White">
     <StackLayout x:Name="MainGrid" Margin="20,40" Spacing="40" Orientation="Vertical">
         <VerticalStackLayout Spacing="5">
-            <Label Grid.Row="0" Text="Welcome &#10;to FormTrack" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03" />
-            <Label Grid.Row="1" Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7" />
-            <AbsoluteLayout IsVisible="{Binding IsAlertVisible}">
+            <Label Text="Welcome &#10;to FormTrack" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03" />
+            <Label Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7" />
+            <AbsoluteLayout IsVisible="{Binding IsAlertVisible}" HorizontalOptions="CenterAndExpand">
                 <Label Text="{Binding AlertMessage}" WidthRequest="440" Margin="10,10" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#FF0000" Opacity="1"/>
                 <RoundRectangle CornerRadius="8" Fill="Red" WidthRequest="440" HeightRequest="70" Opacity="0.15"/>
             </AbsoluteLayout>
@@ -29,18 +29,14 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8" />
                 </Border.StrokeShape>
-                <Grid Margin="20,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="70" />
-                    </Grid.ColumnDefinitions>
-                    <Entry x:Name="PasswordEntry" Text="{Binding Password}" Grid.Column="0" FontAutoScalingEnabled="True" IsPassword="{Binding IsPasswordShow}" Placeholder="Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="Start">
+                <StackLayout Margin="20,0" Orientation="Horizontal">
+                    <Entry x:Name="PasswordEntry" Text="{Binding Password}" Grid.Column="0" FontAutoScalingEnabled="True" IsPassword="{Binding IsPasswordShow}" Placeholder="Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="StartAndExpand">
                         <Entry.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
                         </Entry.GestureRecognizers>
                     </Entry>
                     <Button x:Name="ShowPassBtn" Grid.Column="1" FontAutoScalingEnabled="True" Text="{Binding PasswordShowBtnText}" FontFamily="MontserratBold" BackgroundColor="Transparent" TextColor="#0ACFBF" HorizontalOptions="End" Command="{Binding ChangePasswordVisibleCommand}"/>
-                </Grid>
+                </StackLayout>
             </Border>
         </VerticalStackLayout>
         <VerticalStackLayout Spacing="15" Margin="0,0,0,40">

@@ -1,10 +1,14 @@
-﻿using FormTrackClient.ViewModels;
+﻿using FormTrackClient.Api;
+using FormTrackClient.ViewModels;
 using FormTrackClient.Views;
 
 namespace FormTrackClient;
 
 public static class MauiProgram
 {
+    public static string BearerToken { get; set; }
+    public static string UserName { get; set; }
+    public static DateTime TokenExpireDate { get; set; }
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
