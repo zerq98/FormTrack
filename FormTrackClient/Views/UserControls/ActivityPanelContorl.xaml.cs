@@ -53,8 +53,9 @@ public partial class ActivityPanelContorl : ContentView
         var control = (ActivityPanelContorl)bindable;
         control.ActivityText.Text = (string)newValue;
     }
+
     public ActivityPanelContorl()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+    }
 }

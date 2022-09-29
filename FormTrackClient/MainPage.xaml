@@ -9,10 +9,10 @@
         <VerticalStackLayout Spacing="5">
             <Label Text="Welcome &#10;to FormTrack" FontSize="40" FontAutoScalingEnabled="True" FontFamily="MontserratBold" TextColor="#101B2B" CharacterSpacing="0.03" />
             <Label Text="Don't waste your time,&#10;log in and shape your body" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#101B2B" Opacity="0.7" />
-            <AbsoluteLayout IsVisible="{Binding IsAlertVisible}" HorizontalOptions="CenterAndExpand">
-                <Label Text="{Binding AlertMessage}" WidthRequest="440" Margin="10,10" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#FF0000" Opacity="1"/>
-                <RoundRectangle CornerRadius="8" Fill="Red" WidthRequest="440" HeightRequest="70" Opacity="0.15"/>
-            </AbsoluteLayout>
+            <!--<AbsoluteLayout IsVisible="{Binding IsAlertVisible}" HorizontalOptions="CenterAndExpand">
+                <Label Text="{Binding AlertMessage}" AbsoluteLayout.LayoutBounds="0,0,0.5,0.5" ZIndex="1" AbsoluteLayout.LayoutFlags="SizeProportional" FontSize="20" FontAutoScalingEnabled="True" FontFamily="Montserrat" CharacterSpacing="0.03" TextColor="#FF0000" Opacity="1" />
+                <RoundRectangle CornerRadius="8" Fill="Red" AbsoluteLayout.LayoutBounds="0,0,1,1" ZIndex="0" AbsoluteLayout.LayoutFlags="SizeProportional" HeightRequest="70" Opacity="0.15" />
+            </AbsoluteLayout>-->
         </VerticalStackLayout>
         <VerticalStackLayout Spacing="15" VerticalOptions="Center">
             <Border Stroke="#E8E8E8" StrokeThickness="1" Background="#F6F6F6">
@@ -21,7 +21,7 @@
                 </Border.StrokeShape>
                 <Entry x:Name="EmailEntry" Text="{Binding Login}" Placeholder="Email" FontAutoScalingEnabled="True" TextColor="#BDBDBD" FontSize="20" FontFamily="Montserrat" Margin="20,0">
                     <Entry.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
+                        <TapGestureRecognizer Command="{Binding EntryFocusedCommand}" />
                     </Entry.GestureRecognizers>
                 </Entry>
             </Border>
@@ -32,10 +32,10 @@
                 <StackLayout Margin="20,0" Orientation="Horizontal">
                     <Entry x:Name="PasswordEntry" Text="{Binding Password}" Grid.Column="0" FontAutoScalingEnabled="True" IsPassword="{Binding IsPasswordShow}" Placeholder="Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="StartAndExpand">
                         <Entry.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding EntryFocusedCommand}"/>
+                            <TapGestureRecognizer Command="{Binding EntryFocusedCommand}" />
                         </Entry.GestureRecognizers>
                     </Entry>
-                    <Button x:Name="ShowPassBtn" Grid.Column="1" FontAutoScalingEnabled="True" Text="{Binding PasswordShowBtnText}" FontFamily="MontserratBold" BackgroundColor="Transparent" TextColor="#0ACFBF" HorizontalOptions="End" Command="{Binding ChangePasswordVisibleCommand}"/>
+                    <Button x:Name="ShowPassBtn" Grid.Column="1" FontAutoScalingEnabled="True" Text="{Binding PasswordShowBtnText}" FontFamily="MontserratBold" BackgroundColor="Transparent" TextColor="#0ACFBF" HorizontalOptions="End" Command="{Binding ChangePasswordVisibleCommand}" />
                 </StackLayout>
             </Border>
         </VerticalStackLayout>
@@ -71,13 +71,13 @@
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="100" />
                     </Border.StrokeShape>
-                    <ImageButton Margin="15" Source="fb.png" Command="{Binding LoginWithProvidersCommand}" CommandParameter="fb"/>
+                    <ImageButton Margin="15" Source="fb.png" Command="{Binding LoginWithProvidersCommand}" CommandParameter="fb" />
                 </Border>
                 <Border Margin="10,0" Background="#0ACFBF" WidthRequest="60" StrokeThickness="0">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="100" />
                     </Border.StrokeShape>
-                    <ImageButton Margin="15" Source="google.png" Command="{Binding LoginWithProvidersCommand}" CommandParameter="google"/>
+                    <ImageButton Margin="15" Source="google.png" Command="{Binding LoginWithProvidersCommand}" CommandParameter="google" />
                 </Border>
             </HorizontalStackLayout>
             <Label FontSize="20" TextType="Html" FontAutoScalingEnabled="True" FontFamily="Montserrat" HorizontalTextAlignment="Center" CharacterSpacing="0.065" TextColor="#101B2B">

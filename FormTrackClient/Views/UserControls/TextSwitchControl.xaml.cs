@@ -84,6 +84,7 @@ public partial class TextSwitchControl : ContentView
             IsLeftSelected = false;
         }
     }
+
     public bool IsLeftSelected
     {
         get
@@ -97,5 +98,5 @@ public partial class TextSwitchControl : ContentView
     }
 
     public static readonly BindableProperty IsLeftSelectedProperty =
-    BindableProperty.Create(nameof(IsLeftSelected), typeof(bool), typeof(TextSwitchControl), false,BindingMode.TwoWay);
+    BindableProperty.Create(nameof(IsLeftSelected), typeof(bool), typeof(TextSwitchControl), false, BindingMode.TwoWay);
 }

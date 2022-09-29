@@ -1,48 +1,56 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FormTrackClient.Api;
+using FormTrackClient.Models.Dtos;
 
 namespace FormTrackClient.ViewModels
 {
     public partial class RegisterPageVM : BaseVM
     {
         [ObservableProperty]
-        string email = string.Empty;
+        private string email = string.Empty;
+
         [ObservableProperty]
-        string username = string.Empty;
+        private string username = string.Empty;
+
         [ObservableProperty]
-        string password = string.Empty;
+        private string password = string.Empty;
+
         [ObservableProperty]
-        string confirmPassword = string.Empty;
+        private string confirmPassword = string.Empty;
+
         [ObservableProperty]
-        string showPasswordBtnText = "Show";
+        private string showPasswordBtnText = "Show";
+
         [ObservableProperty]
-        string showConfirmPasswordBtnText = "Show";
+        private string showConfirmPasswordBtnText = "Show";
+
         [ObservableProperty]
-        string alertMessage = string.Empty;
+        private string alertMessage = string.Empty;
+
         [ObservableProperty]
-        bool isAlertVisible = false;
+        private bool isAlertVisible = false;
+
         [ObservableProperty]
-        bool isPasswordVisible = true;
+        private bool isPasswordVisible = true;
+
         [ObservableProperty]
-        bool isConfirmPasswordVisible = true;
+        private bool isConfirmPasswordVisible = true;
+
         [ObservableProperty]
-        bool isPersonalTrainer = false;
+        private bool isPersonalTrainer = false;
+
         [ObservableProperty]
-        bool isNormalUser = true;
+        private bool isNormalUser = true;
 
         [RelayCommand]
-        void EntryFocused()
+        private void EntryFocused()
         {
             IsAlertVisible = false;
         }
 
         [RelayCommand]
-        void ChangePasswordVisible()
+        private void ChangePasswordVisible()
         {
             IsPasswordVisible = !IsPasswordVisible;
             if (!IsPasswordVisible)
@@ -56,7 +64,7 @@ namespace FormTrackClient.ViewModels
         }
 
         [RelayCommand]
-        void ChangeConfirmPasswordVisible()
+        private void ChangeConfirmPasswordVisible()
         {
             IsConfirmPasswordVisible = !IsConfirmPasswordVisible;
             if (!IsPasswordVisible)
@@ -70,23 +78,59 @@ namespace FormTrackClient.ViewModels
         }
 
         [RelayCommand]
-        async Task ShowLoginPage()
+        private async Task ShowLoginPage()
         {
-            await Shell.Current.GoToAsync("Login");
+            await Shell.Current.GoToAsync("Register");
         }
 
         [RelayCommand]
-        void ExecuteRegister()
+        private async Task ExecuteRegister()
         {
-            if(Email==String.Empty || Password==String.Empty || ConfirmPassword == String.Empty)
+            if (Email == String.Empty || Password == String.Empty || ConfirmPassword == String.Empty)
             {
-                IsAlertVisible = true;
                 AlertMessage = "Some of required fields are empty. Please provide data and try again.";
+                await Shell.Current.DisplayAlert("", AlertMessage, "Try again");
+                return;
             }
+
+            if (Password != ConfirmPassword)
+            {
+                AlertMessage = "Password and confirm password are not the same.";
+                await Shell.Current.DisplayAlert("", AlertMessage, "Try again");
+                return;
+            }
+
+            var apiClient = new ApiClient();
+            var response = await apiClient.RegisterAsync(new RegisterDto
+            {
+                Email = Email,
+                IsNormalUser = IsNormalUser,
+                Password = Password,
+                Username = Username,
+            });
+
+            if (response == null)
+            {
+                AlertMessage = "Something went wrong. Try again.";
+                await Shell.Current.DisplayAlert("", AlertMessage, "Try again");
+                return;
+            }
+
+            if (response.Code != 201)
+            {
+                AlertMessage = response.ErrorMessage;
+                await Shell.Current.DisplayAlert("", AlertMessage, "Try again");
+                return;
+            }
+
+            await Shell.Current.DisplayAlert("", response.ErrorMessage, "OK");
+
+            await Task.Delay(5000);
+            await Shell.Current.GoToAsync("Login/Register");
         }
 
         [RelayCommand]
-        void ChangeUserType()
+        private void ChangeUserType()
         {
             IsPersonalTrainer = !IsPersonalTrainer;
         }

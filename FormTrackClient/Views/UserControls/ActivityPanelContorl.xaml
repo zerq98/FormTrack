@@ -4,24 +4,24 @@
              x:Class="FormTrackClient.Views.UserControls.ActivityPanelContorl">
     <Border>
         <Border.Shadow>
-            <Shadow Brush="#0ACFBF" Offset="10,20"/>
+            <Shadow Brush="#0ACFBF" Offset="10,20" />
         </Border.Shadow>
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="8" />
         </Border.StrokeShape>
         <AbsoluteLayout>
-        <Image x:Name="BackgroundImage" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1"/>
-        <Rectangle Opacity="0.7" AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1">
-            <Rectangle.Fill>
-                <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
-                    <GradientStop Color="#0ACFBF"/>
-                    <GradientStop Color="#00FAFD90" Offset="1"/>
-                </LinearGradientBrush>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Label
-            x:Name="ActivityText" FontSize="26" TextColor="White" FontFamily="MontserratBold" CharacterSpacing="0.05" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.20,0.75,1,0.2" Padding="35,0,0,0"/>
-            <Image Source="right_arrow.png" Aspect="AspectFill" WidthRequest="35" HeightRequest="35" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.082,0.90,0.1,0.1"/>
-    </AbsoluteLayout>
+            <Image x:Name="BackgroundImage" Aspect="AspectFill" AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1" />
+            <Rectangle Opacity="0.7" AbsoluteLayout.LayoutFlags="SizeProportional" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0.5,1" EndPoint="0.5,0">
+                        <GradientStop Color="#0ACFBF" />
+                        <GradientStop Color="#00FAFD90" Offset="1" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label
+            x:Name="ActivityText" FontSize="26" TextColor="White" FontFamily="MontserratBold" CharacterSpacing="0.05" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.20,0.75,1,0.2" Padding="35,0,0,0" />
+            <Image Source="right_arrow.png" Aspect="AspectFill" WidthRequest="35" HeightRequest="35" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0.082,0.90,0.1,0.1" />
+        </AbsoluteLayout>
     </Border>
 </ContentView>

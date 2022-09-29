@@ -8,25 +8,30 @@ namespace FormTrackClient.ViewModels
     public partial class MainPageVM : BaseVM
     {
         [ObservableProperty]
-        bool isAlertVisible=false;
+        private bool isAlertVisible = false;
+
         [ObservableProperty]
-        string login = String.Empty;
+        private string login = String.Empty;
+
         [ObservableProperty]
-        string password = String.Empty;
+        private string password = String.Empty;
+
         [ObservableProperty]
-        string alertMessage;
+        private string alertMessage;
+
         [ObservableProperty]
-        bool isPasswordShow=true;
+        private bool isPasswordShow = true;
+
         [ObservableProperty]
-        string passwordShowBtnText = "Show";
+        private string passwordShowBtnText = "Show";
 
         [RelayCommand]
-        async Task ExecuteLogin()
+        private async Task ExecuteLogin()
         {
-            if(Login==String.Empty || Password == String.Empty)
+            if (Login == String.Empty || Password == String.Empty)
             {
                 AlertMessage = "Email or password is empty. Provide data and try again.";
-                IsAlertVisible = true;
+                await Shell.Current.DisplayAlert("", AlertMessage, "Try again");
                 return;
             }
 
@@ -37,10 +42,10 @@ namespace FormTrackClient.ViewModels
                 Password = password
             });
 
-            if(response == null)
+            if (response == null)
             {
                 AlertMessage = "There was a problem with connection to server.";
-                IsAlertVisible = true;
+                await Shell.Current.DisplayAlert("", AlertMessage, "Try again");
                 return;
             }
 
@@ -49,29 +54,29 @@ namespace FormTrackClient.ViewModels
                 MauiProgram.TokenExpireDate = response.Data.ExpireDate;
                 MauiProgram.BearerToken = response.Data.Token;
                 MauiProgram.UserName = response.Data.Username;
-                await Shell.Current.GoToAsync("Home");
+                await Shell.Current.GoToAsync("//Home");
             }
             else
             {
                 AlertMessage = response.ErrorMessage;
-                IsAlertVisible = true;
+                await Shell.Current.DisplayAlert("", AlertMessage, "Try again");
             }
         }
 
         [RelayCommand]
-        async Task ShowRegisterPage()
+        private async Task ShowRegisterPage()
         {
             await Shell.Current.GoToAsync("Register");
         }
 
         [RelayCommand]
-        void EntryFocused()
+        private void EntryFocused()
         {
             IsAlertVisible = false;
         }
 
         [RelayCommand]
-        void ChangePasswordVisible()
+        private void ChangePasswordVisible()
         {
             IsPasswordShow = !IsPasswordShow;
             if (!IsPasswordShow)
@@ -85,18 +90,19 @@ namespace FormTrackClient.ViewModels
         }
 
         [RelayCommand]
-        async Task ShowRememberPasswordPage()
+        private async Task ShowRememberPasswordPage()
         {
             await Shell.Current.GoToAsync("RememberPassword");
         }
 
         [RelayCommand]
-        async Task LoginWithProviders(string provider)
+        private async Task LoginWithProviders(string provider)
         {
             switch (provider)
             {
                 case "fb":
                     break;
+
                 case "google":
                     break;
             }

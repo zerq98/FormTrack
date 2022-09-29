@@ -1,13 +1,8 @@
-﻿using Android.Service.Autofill;
-using FormTrackClient.Models.Dtos;
+﻿using FormTrackClient.Models.Dtos;
 using FormTrackClient.Models.Response;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FormTrackClient.Api
 {
@@ -15,7 +10,7 @@ namespace FormTrackClient.Api
     {
         private readonly HttpClient webClient;
         private readonly JsonSerializer serializer;
-        private string BASE_ADDRESS = DeviceInfo.Platform == DevicePlatform.Android? "https://10.0.2.2:7057/api/": "https://localhost:7057/api/";
+        private string BASE_ADDRESS = DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:7057/api/" : "https://localhost:7057/api/";
 
         public ApiClient()
         {
@@ -39,7 +34,7 @@ namespace FormTrackClient.Api
         {
             try
             {
-                HttpResponseMessage response = await webClient.PostAsync($"account/login", new StringContent(JsonConvert.SerializeObject(dto), Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                HttpResponseMessage response = await webClient.PostAsync($"account/login", new StringContent(JsonConvert.SerializeObject(dto), Encoding.UTF8, "application/json"));
 
                 response.EnsureSuccessStatusCode();
                 var contentStream = await response.Content.ReadAsStreamAsync();
@@ -54,56 +49,25 @@ namespace FormTrackClient.Api
                 return null;
             }
         }
-    }
 
-    public class HttpsClientHandlerService
-    {
-        public HttpMessageHandler GetPlatformMessageHandler()
+        public async Task<ResponseModel<object>> RegisterAsync(RegisterDto registerDto)
         {
-#if ANDROID
-            var handler = new CustomAndroidMessageHandler();
-            handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) =>
+            try
             {
-                if (cert != null && cert.Issuer.Equals("CN=localhost"))
-                    return true;
-                return errors == System.Net.Security.SslPolicyErrors.None;
-            };
-            return handler;
-#elif IOS
-            var handler = new NSUrlSessionHandler
-            {
-                TrustOverrideForUrl = IsHttpsLocalhost
-            };
-            return handler;
-#elif WINDOWS || MACCATALYST
-            return null;
-#else
-         throw new PlatformNotSupportedException("Only Android, iOS, MacCatalyst, and Windows supported.");
-#endif
-        }
+                HttpResponseMessage response = await webClient.PostAsync($"account/register", new StringContent(JsonConvert.SerializeObject(registerDto), Encoding.UTF8, "application/json"));
 
-#if ANDROID
-        internal sealed class CustomAndroidMessageHandler : Xamarin.Android.Net.AndroidMessageHandler
-        {
-            protected override Javax.Net.Ssl.IHostnameVerifier GetSSLHostnameVerifier(Javax.Net.Ssl.HttpsURLConnection connection)
-                => new CustomHostnameVerifier();
+                response.EnsureSuccessStatusCode();
+                var contentStream = await response.Content.ReadAsStreamAsync();
 
-            private sealed class CustomHostnameVerifier : Java.Lang.Object, Javax.Net.Ssl.IHostnameVerifier
+                var streamReader = new StreamReader(contentStream);
+                var jsonReader = new JsonTextReader(streamReader);
+
+                return serializer.Deserialize<ResponseModel<object>>(jsonReader);
+            }
+            catch (WebException ex)
             {
-                public bool Verify(string hostname, Javax.Net.Ssl.ISSLSession session)
-                {
-                    return Javax.Net.Ssl.HttpsURLConnection.DefaultHostnameVerifier.Verify(hostname, session) ||
-                        hostname == "10.0.2.2" && session.PeerPrincipal?.Name == "CN=localhost";
-                }
+                return null;
             }
         }
-#elif IOS
-        public bool IsHttpsLocalhost(NSUrlSessionHandler sender, string url, Security.SecTrust trust)
-        {
-            if (url.StartsWith("https://localhost"))
-                return true;
-            return false;
-        }
-#endif
     }
 }
