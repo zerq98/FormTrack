@@ -26,6 +26,12 @@ namespace FormTrackClient.ViewModels
         private string passwordShowBtnText = "Show";
 
         [RelayCommand]
+        private void SelectNextControl(Entry entry)
+        {
+            entry.Focus();
+        }
+
+        [RelayCommand]
         private async Task ExecuteLogin()
         {
             if (Login == String.Empty || Password == String.Empty)
@@ -54,7 +60,7 @@ namespace FormTrackClient.ViewModels
                 MauiProgram.TokenExpireDate = response.Data.ExpireDate;
                 MauiProgram.BearerToken = response.Data.Token;
                 MauiProgram.UserName = response.Data.Username;
-                await Shell.Current.GoToAsync("//Home");
+                await Shell.Current.GoToAsync("Home");
             }
             else
             {

@@ -2,9 +2,9 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FormTrackClient.Views.UserControls.ActivityPanelContorl">
-    <Border>
+    <Border Margin="0,0,10,0">
         <Border.Shadow>
-            <Shadow Brush="#0ACFBF" Offset="10,20" />
+            <Shadow Brush="#8F0ACFBF" Offset="10,20" />
         </Border.Shadow>
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="8" />

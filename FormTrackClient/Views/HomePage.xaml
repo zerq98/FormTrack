@@ -42,28 +42,28 @@
         </ScrollView>
         <ContentView Padding="0,2,0,0" Margin="-20,0" BackgroundColor="#878787">
             <StackLayout Orientation="Horizontal" Spacing="15" Background="White">
-                <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                <VerticalStackLayout HorizontalOptions="FillAndExpand" Margin="0,5">
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ShowNavigationPageCommand}" CommandParameter="HomePage" />
                     </VerticalStackLayout.GestureRecognizers>
                     <Image Source="home.png" WidthRequest="40" />
                     <Label Text="Home" HorizontalTextAlignment="Center" TextColor="#0ACFBF" FontFamily="MontserratBold" />
                 </VerticalStackLayout>
-                <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                <VerticalStackLayout HorizontalOptions="FillAndExpand" Margin="0,5">
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ShowNavigationPageCommand}" CommandParameter="PlansPage" />
                     </VerticalStackLayout.GestureRecognizers>
                     <Image Source="plans_gray.png" WidthRequest="40" />
                     <Label Text="Plans" HorizontalTextAlignment="Center" TextColor="#878787" FontFamily="MontserratBold" />
                 </VerticalStackLayout>
-                <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                <VerticalStackLayout HorizontalOptions="FillAndExpand" Margin="0,5">
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ShowNavigationPageCommand}" CommandParameter="StatsPage" />
                     </VerticalStackLayout.GestureRecognizers>
                     <Image Source="stats_gray.png" WidthRequest="40" />
                     <Label Text="Statistics" HorizontalTextAlignment="Center" TextColor="#878787" FontFamily="MontserratBold" />
                 </VerticalStackLayout>
-                <VerticalStackLayout HorizontalOptions="FillAndExpand">
+                <VerticalStackLayout HorizontalOptions="FillAndExpand" Margin="0,5">
                     <VerticalStackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ShowNavigationPageCommand}" CommandParameter="ChatsPage" />
                     </VerticalStackLayout.GestureRecognizers>

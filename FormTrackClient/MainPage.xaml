@@ -19,7 +19,9 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="8" />
                 </Border.StrokeShape>
-                <Entry x:Name="EmailEntry" Text="{Binding Login}" Placeholder="Email" FontAutoScalingEnabled="True" TextColor="#BDBDBD" FontSize="20" FontFamily="Montserrat" Margin="20,0">
+                <Entry x:Name="EmailEntry" Text="{Binding Login}" Placeholder="Email"
+                       ReturnType="Next" ReturnCommand="{Binding SelectNextControlCommand}"
+                       ReturnCommandParameter="{Binding Source={x:Reference PasswordEntry}}" FontAutoScalingEnabled="True" TextColor="#BDBDBD" FontSize="20" FontFamily="Montserrat" Margin="20,0" >
                     <Entry.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding EntryFocusedCommand}" />
                     </Entry.GestureRecognizers>
@@ -30,7 +32,8 @@
                     <RoundRectangle CornerRadius="8" />
                 </Border.StrokeShape>
                 <StackLayout Margin="20,0" Orientation="Horizontal">
-                    <Entry x:Name="PasswordEntry" Text="{Binding Password}" Grid.Column="0" FontAutoScalingEnabled="True" IsPassword="{Binding IsPasswordShow}" Placeholder="Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="StartAndExpand">
+                    <Entry x:Name="PasswordEntry" Text="{Binding Password}" Grid.Column="0"  ReturnType="Go"
+                            ReturnCommand="{Binding ExecuteLoginCommand}" FontAutoScalingEnabled="True" IsPassword="{Binding IsPasswordShow}" Placeholder="Password" TextColor="#BDBDBD" FontFamily="Montserrat" FontSize="20" HorizontalOptions="StartAndExpand">
                         <Entry.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding EntryFocusedCommand}" />
                         </Entry.GestureRecognizers>
